@@ -6,7 +6,13 @@ import re
 import tkinter as tk
 from tkinter import scrolledtext
 from threading import Thread
-
+# importing os module for environment variables
+import os
+# importing necessary functions from dotenv library
+from dotenv import load_dotenv, dotenv_values 
+# loading variables from .env file
+load_dotenv() 
+ 
 # Path ke executable Tesseract di sistem Anda
 pytesseract.pytesseract.tesseract_cmd = r'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'  # Ubah sesuai path di sistem Anda
 
@@ -14,7 +20,7 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\\Program Files\\Tesseract-OCR\\tess
 def simpan_transaksi(waktu, gambar_path, buku_yang_terdeteksi, buku_yang_tidak_terdeteksi):
     try:
         db = mysql.connector.connect(
-            host="localhost",
+            host=os.getenv("host"),
             user="root",  # Ganti dengan username MySQL Anda
             password="",  # Ganti dengan password MySQL Anda
             database="pkl"
