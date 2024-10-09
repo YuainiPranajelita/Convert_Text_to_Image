@@ -21,8 +21,8 @@ def simpan_transaksi(waktu, gambar_path, buku_yang_terdeteksi, buku_yang_tidak_t
     try:
         db = mysql.connector.connect(
             host=os.getenv("host"),
-            user="root",  # Ganti dengan username MySQL Anda
-            password="",  # Ganti dengan password MySQL Anda
+            user="root",  
+            password="",  
             database="pkl"
         )
         cursor = db.cursor()
